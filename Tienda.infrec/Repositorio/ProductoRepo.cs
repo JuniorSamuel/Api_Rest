@@ -29,5 +29,32 @@ namespace Tienda.infrastructure.Repositorio
             var producto = await context.Producto.FirstOrDefaultAsync(x => x.IdProducto == id);
             return producto;
         }
+
+        public async Task InsetProducto(Producto producto)
+        {
+            context.Producto.Add(producto);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> UpdateProducto(Producto producto)
+        {
+            var currentCliente = await GetProducto(producto.IdProducto);
+            currentCliente.Nombre = producto.Nombre;
+            currentCliente.Descripcion = producto.Descripcion;
+            currentCliente.Precio = producto.Precio;
+
+            int filas = await context.SaveChangesAsync();
+            return filas > 0;
+        }
+
+        public async Task<bool> DeleteProducto(int id)
+        {
+            var currentProducto = await GetProducto(id);
+            context.Producto.Remove(currentProducto);
+
+            int filas = await context.SaveChangesAsync();
+            return filas > 0;
+        }
+
     }
 }
