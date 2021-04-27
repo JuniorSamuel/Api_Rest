@@ -34,7 +34,7 @@ namespace Tienda.api.Controllers
                 Apellido = x.Apellido,
                 FecharContratado = x.FecharContratado
             });
-            var respuesta = new ApiRespuesta<IEnumerable<VendedorDto>>(productosDto);
+            var respuesta = new ApiRespuesta<IEnumerable<VendedorDto>>(vendedoresDto);
             return Ok(respuesta);
         }
 
@@ -42,7 +42,7 @@ namespace Tienda.api.Controllers
         public async Task<IActionResult> GetVendedor(int id)
         {
             var vendedor = await vendedorRepo.GetVendedor(id);
-            var vendedorDto = new VendedorDto
+            var vendedoresDto = new VendedorDto
             {
                 IdVendedor = vendedor.IdVendedor,
                 Nombre = vendedor.Nombre,
@@ -50,7 +50,7 @@ namespace Tienda.api.Controllers
                 FecharContratado = vendedor.FecharContratado
             };
 
-            var respuesta = new ApiRespuesta<VendedorDto>(productosDto);
+            var respuesta = new ApiRespuesta<VendedorDto>(vendedoresDto);
             return Ok(respuesta);
         }
 
@@ -65,8 +65,8 @@ namespace Tienda.api.Controllers
                 FecharContratado = vendedoresDto.FecharContratado
             };
 
-            await vendedorRepo.InsetProducto(vendedor);
-            var respuesta = new ApiRespuesta<VendedorDto>(productosDto);
+            await vendedorRepo.InsetVendedor(vendedor);
+            var respuesta = new ApiRespuesta<VendedorDto>(vendedoresDto);
             return Ok(respuesta);
         }
 
@@ -80,7 +80,7 @@ namespace Tienda.api.Controllers
                 Apellido = vendedoresDto.Apellido,
                 FecharContratado = vendedoresDto.FecharContratado
             };
-            vendedor.IdProducto = id;
+            vendedor.IdVendedor = id;
 
             var resultado = await vendedorRepo.UpdateVendedor(vendedor);
             var respuesta = new ApiRespuesta<bool>(resultado);

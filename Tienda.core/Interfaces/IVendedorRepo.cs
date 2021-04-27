@@ -9,7 +9,7 @@ namespace Tienda.core.Interfaces
     public interface IVendedorRepo
     {
         Task<IEnumerable<Vendedor>> GetVendedor();
-        Task<Vendedor> GetProducto(int id);
+        Task<Vendedor> GetVendedor(int id);
         Task InsetVendedor(Vendedor vendedor);
         Task<bool> UpdateVendedor(Vendedor vendedor);
         Task<bool> DeleteVendedor(int id);

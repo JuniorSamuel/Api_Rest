@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Tienda.core.Entidades
 {
     public partial class HistorialVentas
-    {
+    { //{idClien, idVen, ip pro }
         public int IdHistorial { get; set; }
         public int? IdCliente { get; set; }
         public int? IdVendedor { get; set; }
