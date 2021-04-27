@@ -16,39 +16,40 @@ namespace Tienda.infrec.Repositorio
         {
             this.context = context;
         }
-        public async Task<IEnumerable<HistorialVentasRepo>> GetHistorialVentas()
+        public async Task<IEnumerable<HistorialVentas>> GetHistorialVentas()
         {
             var HistorialVentas = await context.HistorialVentas.ToListAsync();
-            return (IEnumerable<HistorialVentasRepo>)HistorialVentas;
+            return (IEnumerable<HistorialVentas>)HistorialVentas;
         }
 
-        public async Task<HistorialVentas> GetProducto(int id)
+        public async Task<HistorialVentas> GetHistorialVentas(int id)
         {
-            var producto = await context.Producto.FirstOrDefaultAsync((System.Linq.Expressions.Expression<Func<HistorialVentas, bool>>)(x => x.IdProducto == id));
-            return producto;
+            var historialVentas = await context.HistorialVentas.FirstOrDefaultAsync(x => x.IdHistorial == id);
+            return historialVentas;
         }
 
-        public async Task InsetProducto(HistorialVentas historialVentas)
+        public async Task InsetHistorialVentas(HistorialVentas historialVentas)
         {
             context.HistorialVentas.Add(historialVentas);
             await context.SaveChangesAsync();
         }
 
-        public async Task<bool> UpdateProducto(HistorialVentas producto)
+        public async Task<bool> UpdateHistorialVentas(HistorialVentas historialVentas)
         {
-            var currentCliente = await GetProducto(producto.IdProducto);
-            currentCliente.Nombre = producto.Nombre;
-            currentCliente.Descripcion = producto.Descripcion;
-            currentCliente.Precio = producto.Precio;
+            var currentCliente = await GetHistorialVentas(historialVentas.IdHistorial);
+            currentCliente.IdCliente = historialVentas.IdCliente;
+            currentCliente.IdVendedor = historialVentas.IdVendedor;
+            currentCliente.IdProducto = historialVentas.IdProducto;
+            currentCliente.Fecha = historialVentas.Fecha;
 
             int filas = await context.SaveChangesAsync();
             return filas > 0;
         }
 
-        public async Task<bool> DeleteProducto(int id)
+        public async Task<bool> DeleteHistorialVentas(int id)
         {
-            var currentProducto = await GetProducto(id);
-            context.Producto.Remove(currentProducto);
+            var currentHistorialVentas = await GetHistorialVentas(id);
+            context.HistorialVentas.Remove(currentHistorialVentas);
 
             int filas = await context.SaveChangesAsync();
             return filas > 0;
