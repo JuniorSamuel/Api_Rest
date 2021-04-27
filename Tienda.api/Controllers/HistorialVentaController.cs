@@ -26,7 +26,7 @@ namespace Tienda.api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetHistirialVenta()
         {
-            var historialVentas = await historialVentasRepo.GetHistirialVenta();
+            var historialVentas = await historialVentasRepo.GetHistorialVentas();
             var historialVentasDto = historialVentas.Select(x => new HistorialVentasDto
             {
                 IdHistorialVenta = x.IdHistorialVenta,
@@ -41,7 +41,7 @@ namespace Tienda.api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetHistirialVenta(int id)
         {
-            var historialVenta = await historialVentasRepo.GetHistirialVenta(id);
+            var historialVenta = await historialVentasRepo.GetHistorialVentas(id);
             var historialVentaDto = new HistorialVentasDto
             {
                 IdProducto = historialVenta.IdHistorialVenta,
@@ -81,7 +81,7 @@ namespace Tienda.api.Controllers
             };
             HistorialVenta.IdHistorialVenta = id;
 
-            var resultado = await historialVentasRepo.UpdateHistorialVenta(historialVenta);
+            var resultado = await historialVentasRepo.UpdateHistorialVentas(historialVenta);
             var respuesta = new ApiRespuesta<bool>(resultado);
             return Ok(respuesta);
         }
@@ -89,7 +89,7 @@ namespace Tienda.api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteHistorialVenta(int id)
         {
-            var resultado = await historialVentasRepo.DeleteHistorialVenta(id);
+            var resultado = await historialVentasRepo.DeleteHistorialVentas(id);
 
             var respuesta = new ApiRespuesta<bool>(resultado);
             return Ok(respuesta);
