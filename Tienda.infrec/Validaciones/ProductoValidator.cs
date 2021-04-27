@@ -11,7 +11,8 @@ namespace Tienda.infrec.Validaciones
     {
         public ProductoValidator()
         {
-            RuleFor(producto => producto.IdProducto).l
+            RuleFor(producto => producto.IdProducto)
+                .GreaterThan(0)
                 .WithMessage("La id producto, no puede ser nula");
 
             RuleFor(producto =>producto.Nombre)

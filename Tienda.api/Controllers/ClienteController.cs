@@ -42,14 +42,14 @@ namespace Tienda.api.Controllers
         public async Task<IActionResult> GetCliente(int id)
         {
             var cliente = await clienteRepo.GetCliente(id);
-            var productosDto = new ClienteDto
+            var clienteDto = new ClienteDto
             {
                 IdCliente = cliente.IdCliente,
                 Nombre = cliente.Nombre,
                 Apellido = cliente.Apellido
             };
 
-            var respuesta = new ApiRespuesta<ClienteDto>(productosDto);
+            var respuesta = new ApiRespuesta<ClienteDto>(clienteDto);
             return Ok(respuesta);
         }
 
