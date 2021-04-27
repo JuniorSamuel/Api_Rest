@@ -8,5 +8,8 @@ namespace Tienda.core.Interfaces
     {
         Task<IEnumerable<Producto>> GetProducto();
         Task<Producto> GetProducto(int id);
+        Task InsetProducto(Producto cliente);
+        Task<bool> UpdateProducto(Producto producto);
+        Task<bool> DeleteProducto(int id);
     }
 }
