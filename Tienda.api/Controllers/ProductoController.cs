@@ -58,7 +58,6 @@ namespace servicioTienda.api.Controllers
         {
             var producto = new Producto
             {
-                IdProducto = productosDto.IdProducto,
                 Nombre = productosDto.Nombre,
                 Precio = productosDto.Precio,
                 Descripcion = productosDto.Descripcion
@@ -66,7 +65,7 @@ namespace servicioTienda.api.Controllers
 
             await productoRepo.InsetProducto(producto);
             var respuesta = new ApiRespuesta<ProductoDto>(productosDto);
-            return Ok(productosDto);
+            return Ok(respuesta);
         }
 
         [HttpPut]
@@ -81,7 +80,7 @@ namespace servicioTienda.api.Controllers
             };
             producto.IdProducto = id;
 
-            var resultado = await productoRepo.UpdateProduccto(producto);
+            var resultado = await productoRepo.UpdateProducto(producto);
             var respuesta = new ApiRespuesta<bool>(resultado);
             return Ok(respuesta);
         }
