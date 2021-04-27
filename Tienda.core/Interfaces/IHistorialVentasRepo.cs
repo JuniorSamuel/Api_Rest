@@ -13,5 +13,6 @@ namespace Tienda.core.Interfaces
         Task InsetHistorialVentas(HistorialVentas historialVentas);
         Task<bool> UpdateHistorialVentas(HistorialVentas historialVentas);
         Task<bool> DeleteHistorialVentas(int id);
+
     }
 }
