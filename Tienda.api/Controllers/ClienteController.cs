@@ -57,8 +57,7 @@ namespace Tienda.api.Controllers
         public async Task<IActionResult> Post(ClienteDto clienteDto)
         {
             var cliente = new Cliente
-            {
-                IdCliente = clienteDto.IdCliente,
+            {             
                 Nombre = clienteDto.Nombre,
                 Apellido = clienteDto.Apellido,
             };
