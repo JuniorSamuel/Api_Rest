@@ -36,6 +36,8 @@ namespace Tienda.api
 
             services.AddTransient<IProductoRepo, ProductoRepo>();
             services.AddTransient<IClienteRepo, ClienteRepo>();
+            services.AddTransient<IVendedorRepo, VendedorRepo>();
+            services.AddTransient<IHistorialVentasRepo, HistorialVentasRepo>();
 
             services.AddDbContext<TiendaContext>(optiones =>
                 optiones.UseSqlServer(Configuration.GetConnectionString("Tienda"))

@@ -41,7 +41,7 @@ namespace Tienda.api.Controllers
         public async Task<IActionResult> GetProducto(int id)
         {
             var producto = await productoRepo.GetProducto(id);
-            var productosDto = new ProductoDto
+            var productoDto = new ProductoDto
             {
                 IdProducto = producto.IdProducto,
                 Nombre = producto.Nombre,
@@ -49,7 +49,7 @@ namespace Tienda.api.Controllers
                 Precio = producto.Precio
             };
 
-            var respuesta = new ApiRespuesta<ProductoDto>(productosDto);
+            var respuesta = new ApiRespuesta<ProductoDto>(productoDto);
             return Ok(respuesta);
         }
 
