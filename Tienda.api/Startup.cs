@@ -16,8 +16,7 @@ using System.Threading.Tasks;
 using Tienda.core.Interfaces;
 using Tienda.infrastructure.Repositorio;
 using Tienda.infrec.Data;
-
-
+using Tienda.infrec.Repositorio;
 
 namespace Tienda.api
 {
@@ -36,6 +35,7 @@ namespace Tienda.api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<IProductoRepo, ProductoRepo>();
+            services.AddTransient<IClienteRepo, ClienteRepo>();
 
             services.AddDbContext<TiendaContext>(optiones =>
                 optiones.UseSqlServer(Configuration.GetConnectionString("Tienda"))

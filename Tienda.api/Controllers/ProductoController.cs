@@ -9,7 +9,7 @@ using Tienda.core.Entidades;
 using Tienda.core.Interfaces;
 using Tienda.api.Respuestas;
 
-namespace servicioTienda.api.Controllers
+namespace Tienda.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
