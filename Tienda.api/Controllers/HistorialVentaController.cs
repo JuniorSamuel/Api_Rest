@@ -29,10 +29,11 @@ namespace Tienda.api.Controllers
             var historialVentas = await historialVentasRepo.GetHistorialVentas();
             var historialVentasDto = historialVentas.Select(x => new HistorialVentasDto
             {
-                IdHistorialVenta = x.IdHistorialVenta,
-                Nombre = x.Nombre,
-                Descripcion = x.Descripcion,
-                Precio = x.Precio
+                IdHistorial = x.IdHistorial,
+                IdCliente = x.IdCliente,
+                IdVendedor = x.IdVendedor,
+                IdProducto = x.IdProducto,
+                Fecha = x.Fecha
             });
             var respuesta = new ApiRespuesta<IEnumerable<HistorialVentasDto>>(historialVentasDto);
             return Ok(respuesta);
@@ -44,10 +45,11 @@ namespace Tienda.api.Controllers
             var historialVenta = await historialVentasRepo.GetHistorialVentas(id);
             var historialVentaDto = new HistorialVentasDto
             {
-                IdProducto = historialVenta.IdHistorialVenta,
-                Nombre = historialVenta.Nombre,
-                Descripcion = historialVenta.Descripcion,
-                Precio = historialVenta.Precio
+                IdHistorial = historialVenta.IdHistorial,
+                IdCliente = historialVenta.IdCliente,
+                IdVendedor = historialVenta.IdVendedor,
+                IdProducto = historialVenta.IdProducto,
+                Fecha = historialVenta.Fecha
             };
 
             var respuesta = new ApiRespuesta<HistorialVentasDto>(historialVentaDto);
@@ -59,27 +61,30 @@ namespace Tienda.api.Controllers
         {
             var historialVenta = new HistorialVentas
             {
-                Nombre = historialVentasDto.Nombre,
-                Precio = historialVentasDto.Precio,
-                Descripcion = historialVentasDto.Descripcion
+                IdHistorial = historialVentasDto.IdHistorial,
+                IdCliente = historialVentasDto.IdCliente,
+                IdVendedor = historialVentasDto.IdVendedor,
+                IdProducto = historialVentasDto.IdProducto,
+                Fecha = historialVentasDto.Fecha
             };
 
-            await historialVentasRepo.InsetHiistorialVenta(historialVenta);
+            await historialVentasRepo.InsetHistorialVentas(historialVenta);
             var respuesta = new ApiRespuesta<HistorialVentasDto>(historialVentasDto);
             return Ok(respuesta);
         }
 
         [HttpPut]
-        public async Task<IActionResult> PuthistorialVenta(int id, HistorialVentasDto historialVentaDto)
+        public async Task<IActionResult> PuthistorialVenta(int id, HistorialVentasDto historialVentasDto)
         {
             var historialVenta = new HistorialVentas
             {
-                IdHistorialVenta = HistorialVentaDto.IdHistorialVenta,
-                Nombre = HistorialVentaDto.Nombre,
-                Precio = HistorialVentaDto.Precio,
-                Descripcion = HistorialVentaDto.Descripcion
+                IdHistorial = historialVentasDto.IdHistorial,
+                IdCliente = historialVentasDto.IdCliente,
+                IdVendedor = historialVentasDto.IdVendedor,
+                IdProducto = historialVentasDto.IdProducto,
+                Fecha = historialVentasDto.Fecha
             };
-            HistorialVenta.IdHistorialVenta = id;
+            historialVentasDto.IdHistorial = id;
 
             var resultado = await historialVentasRepo.UpdateHistorialVentas(historialVenta);
             var respuesta = new ApiRespuesta<bool>(resultado);
