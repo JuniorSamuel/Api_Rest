@@ -12,4 +12,4 @@ Historial de Ventas
 
 ## Estudiantes:
 <li> Jose Miguel Upia 2019-8757</li>
-<li> Junior Samuel De Los Santos 2019-8756<li/>
+<li> Junior Samuel De Los Santos 2019-8756</li>
