@@ -1,14 +1,13 @@
 # Api_Rest
 
-En este proyecto se creo una API Rest utilizando .Net Core, con una implementacion de la arquitectura limpia(clean architecture)
-
-Para realziar la demostracion creamos una api que se conecta a la base de datos SQL server
+<p>En este proyecto se creo una API Rest utilizando .Net Core, con una implementacion de la arquitectura limpia (clean architecture).
+Para realizar la demostracion creamos una api que se conecta a la base de datos SQL server</p>
 
 Entidades:
-	Cliente
-Producto
-Vendedor
-Historial de Ventas 
+<ul>Cliente</ul>
+<ul>Producto</ul>
+<ul>Vendedor</ul>
+<ul>Historial de Ventas</ul>
 
 ## Estudiantes:
 <li> Jose Miguel Upia 2019-8757</li>
